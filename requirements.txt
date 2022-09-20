@@ -1,0 +1,17 @@
+
+psycopg2-binary==2.9.3
+unittest2
+mock
+Flask
+Flask-CORS
+flask_sqlalchemy
+redis
+python-dateutil
+xmltodict
+requests
+lxml
+apscheduler
+flask_script 
+flask_migrate
+pyTelegramBotAPI
+pillow
