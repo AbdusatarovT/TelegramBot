@@ -35,13 +35,3 @@ def send_pass(email, oft):
 
 
 
-# def get_all_users():
-#     with app.app_context():
-#         for u in db.session.query(User).all():
-            
-#             print(u.email, u.otp, u.user_id)
-
-# get_all_users()
-
-
-

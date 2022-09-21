@@ -2,7 +2,7 @@
 # import traceback
 # import time
 
-from email import message
+
 import telebot
 from telebot import types
 from admin_app import app
@@ -41,6 +41,7 @@ def delete_user(id):
             db.session.delete(a)
             db.session.commit()
 
+# метод для обновления БД
 def update(id):
     with app.app_context():
         a = db.session.query(User).filter(User.user_id == id).first()
@@ -49,6 +50,11 @@ def update(id):
             db.session.add(a)
             db.session.commit()
             print('Все окей')
+
+def get_info():
+    with app.app_context():
+        users = db.session.query(User.email, User.active, User.user_id).all()
+        return users
 
 
 
@@ -70,6 +76,11 @@ def start(message):
     markup.add(item1, item2)
     
     bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}', reply_markup=markup)
+
+@bot.message_handler(commands=['info'])
+def info(message):
+    users = get_info()
+    bot.send_message(message.chat.id, f'Информация об участниках группы! {users}')
 
 
 @bot.message_handler(content_types=['text'])

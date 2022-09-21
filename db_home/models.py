@@ -14,8 +14,9 @@ class User(db.Model):
     email = Column(String(64), unique=True)
     active = Column(Boolean, default=False)
     otp = Column(String(20))
-    user_id = Column(BigInteger, unique=True)
+    user_id = Column(BigInteger)
 
     
 
 
+# , unique=True
